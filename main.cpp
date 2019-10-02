@@ -3,7 +3,6 @@
 
 using namespace std;
 
-//int elements;
 int click;
 int index=0;
 int table[10];
@@ -17,8 +16,6 @@ void size();
 
 int main()
 {
-
-
     do{
 
         show();
@@ -51,15 +48,26 @@ int main()
 
     } while(click!=5);
 
-
-
     return 0;
 }
 
+void menu()
+{
+
+        cout << "MENU\n" << endl;
+        cout << "1 - Add element to Queue" << endl;
+        cout << "2 - Remove element from Queue" << endl;
+        cout << "3 - Checking if the Queue is empty" << endl;
+        cout << "4 - Checking size of Queue" << endl;
+        cout << "5 - EXIT" << endl;
+        cout << "MAX ELEMENTS \"10\" " << endl;
+
+        cin >> click;
+}
 void show()
 {
     system("CLS");
-    cout << "ELEMENT ON STACK: " << endl;
+    cout << "ELEMENT ON QUEUE: " << endl;
 
     for (int i=0; i< index; i++)
     {
@@ -68,19 +76,6 @@ void show()
     cout << endl;
 }
 
-void menu()
-{
-
-        cout << "MENU\n" << endl;
-        cout << "1 - Add element to stack" << endl;
-        cout << "2 - Remove element from stack" << endl;
-        cout << "3 - Checking if the stack is empty" << endl;
-        cout << "4 - Checking size of stack" << endl;
-        cout << "5 - EXIT" << endl;
-        cout << "MAX ELEMENTS \"10\" " << endl;
-
-        cin >> click;
-}
 
 void push()
 {
@@ -101,8 +96,15 @@ void pop()
 {
     if (index !=0)
     {
-        cout << "Remove last number" << endl;
+        cout << "Remove first element" << endl;
+
+        for (int i=0; i<index-1; i++)
+        {
+            table[i] = table[i+1];
+        }
+
         index--;
+
         Sleep(2000);
     }
     else
@@ -110,11 +112,11 @@ void pop()
         cout << "empty !!" << endl;
         Sleep(2000);
     }
-
 }
 
 void empty()
 {
+
     if (index == 0)
     {
         cout << "Empty" << endl;
@@ -131,6 +133,14 @@ void empty()
 
 void size()
 {
+    if (index == 0)
+    {
+        empty();
+    }
+    else
+    {
     cout << "Size = " << index;
     Sleep(2000);
+    }
+
 }
